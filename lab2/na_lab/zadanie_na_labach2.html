@@ -1,0 +1,41 @@
+<!-- Źródło / Source: https://mochajs.org/#running-mocha-in-the-browser -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      zadanie na lab 2
+    </title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://unpkg.com/mocha/mocha.css">
+  </head>
+  <body>
+        <textarea name="nazwa" form = "usrform" id="form"></textarea>
+
+        <button type="button" onclick=print_things()>Oblicz</button>
+
+        <INPUT TYPE="radio" NAME="Name" VALUE="Value" id="radio" {CHECKED}>
+        <input type="button" value="odznacz" onclick="document.getElementById('radio').checked = false">
+
+    <div id="mocha">
+    </div>
+
+    <p id="wynik"></p>
+    
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script class="mocha-init">
+
+      mocha.setup('bdd');
+      mocha.checkLeaks();
+    </script>
+    <script src="script_do_lab2.js"></script>
+    <script class="mocha-exec">
+
+      mocha.run();
+    </script>
+    <div id="printuje"></div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+    "to_calculate":[
+        {
+            "first":5,
+            "second":5,
+            "operator":"*"
+        },
+        {
+            "first":5,
+            "second":5,
+            "operator":"+"
+        },
+        {
+            "first":5,
+            "second":5,
+            "operator":"-"
+        },
+        {
+            "first":5,
+            "second":5,
+            "operator":"/"
+        }
+    ]
+}

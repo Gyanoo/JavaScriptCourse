@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      Jestem Picasso rysuje se obrazzzz
+    </title>
+  </head>
+  <body>
+    <main>
+        <form>
+            <input type="text" id="N" placeholder="drawings drawn in one session">
+            <input type="text" id="M" placeholder="max number of drawings">
+            <input type="button" value="Get drawings" onclick="startGettingDrawings()"> 
+            <input type="button" value="Stop the interval" onclick="stopInterval()"> 
+      </form>
+      <canvas id="canvases" width="1900" height="950" style="background: #e6d0a8fa;">
+      </canvas>
+    </main>
+  </body>
+  <script>
+    function requestAJAX() {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = () => response(xhr);
+      xhr.open('GET', '/submit', true);
+      xhr.send(null);
+    }
+
+
+
+    var intervalsID;
+    var drawingsCount = 0;
+    function startGettingDrawings(){
+        // let x = document.createTextNode("starting...");
+        intervalsID = setInterval(getDrawings, 2000);
+    }
+
+    function stopInterval(){
+        clearInterval(intervalsID);
+    }
+
+    function getDrawings(){
+        for(var i=0;i<parseInt(document.getElementById("N").value); i++){
+            if(drawingsCount >= document.getElementById("M").value){
+                var context = document.getElementById("canvases").getContext("2d");
+                context.clearRect(0,0,1900, 950);
+                stopInterval(intervalsID);
+                drawingsCount = 0;
+                return;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = () => response(xhr);
+            xhr.open('GET', '/submit?number=' + '1', false); //document.getElementById("N").value, true);
+            xhr.send(null);
+            drawingsCount++;
+        }
+    }
+
+    function response(xhr) {
+      try {
+        if (xhr.readyState == XMLHttpRequest.DONE) { // If the response is ready
+          if (xhr.status == 200) {                   // If the request was correct
+            var received_data = xhr.responseText; // Get a response in the form of a string
+            var received_data = JSON.parse(received_data);
+            var shape = received_data.shape;
+            var x_start = received_data.x_start;
+            var y_start = received_data.y_start;
+            var length = received_data.len; 
+            var color = received_data.color;
+            console.log(received_data);
+            console.log(shape);
+            console.log(x_start);
+            console.log(y_start);
+            console.log(length);
+            console.log(color);
+
+            var canvases = document.getElementById('canvases');
+            var context = canvases.getContext('2d');
+            context.moveTo(x_start, y_start);
+            context.beginPath();
+            context.strokeStyle = color;
+            context.fillStyle = color;
+            if (shape == 0){//square
+                context.fillRect(x_start, y_start, length, length);
+            }
+            else if (shape == 1){//circle
+                context.arc(x_start, y_start, length, 0, 2 * Math.PI);
+                context.fill();
+            }
+            else{//triangle
+                context.moveTo(x_start, y_start);
+                context.lineTo(x_start, y_start - length);
+                context.lineTo(x_start+length, y_start-length);
+                context.fill();
+            }
+            context.closePath();
+            context.stroke();
+          }
+        }
+      }
+      catch (e) {
+      }
+    }
+
+    </script>
+</html>

@@ -1,0 +1,46 @@
+<html>
+  <body onLoad="
+            console.log('Tekst 1');
+            //check_type();
+            ">
+    <div>Treść dokumentu HTML</div>
+    <div>Treść dokumentu HTML</div>
+    <div>Treść dokumentu HTML</div>
+    <div>punkt 9: do wyzanczenia typów użyłem funkcji check_type();
+        <ul>
+            <li>string</li>
+            <li>string</li>
+            <li>string</li>
+            <li>object</li>
+        </ul>
+    </div>
+    <form>
+        <input name="pole_tekstowe" type="text" id="example_input">
+        <input type="button" value="Wypisz" onclick=print_input()>
+    </form>
+    <p id="printnij"></p>
+    <div>punkt 12: do wyznaczenia typów uzylem funkcji print_input(dokladniej czesci type_of(input_val) w czesci wyswitlanej
+        <ul>
+            <li>string</li>
+            <li>string</li>
+            <li>string</li>
+        </ul>
+    </div>
+    <script src="script_do_pierwszego.js"></script>
+    <!-- <script>
+        function print_input(){
+            var input_val = document.getElementById("example_input").value;
+            document.getElementById("printnij").innerHTML = input_val + "  " + typeof(input_val);
+        }
+    </script>
+    <script>
+        // window.prompt("Tekst1","Tekst2");
+    </script>
+    <script>
+        function check_type(){
+            var temp = window.prompt("podaj coś")
+            console.log(typeof(temp));
+        }
+    </script> -->
+  </body>
+</html>

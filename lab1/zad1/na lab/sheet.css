@@ -1,0 +1,64 @@
+.dropdown.menu{
+    background-color: black;
+}
+.center {
+    /* display: block; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* width: 25%; */
+    /* height: 80%; */
+    background: black; 
+    color:white; 
+    padding:10px;
+  }
+.sub{
+    background-color:black;
+    /* display: block; */
+    /* margin-left: 2%; */
+    /* margin-right: 2%; */
+    /* width: 25%; */
+    height: 35%;
+    color:white;
+    padding: 10px;
+    margin:10px;
+}
+.left{
+    float:left;
+}
+.right{
+    float:right;
+}
+.img{
+    width:auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+footer{
+    background-color: cyan;
+    text-align: center;
+    font-size: 150%;
+}
+.rotate{
+    animation-name: rotate;
+    animation-duration:10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes rotate
+{
+    0% {position: relative; left: 0px; top: 0px;}
+    25% {position: relative; left: 200px; top: 200px;}
+    50% {position: relative; left: 0px; top: 400px;}
+    75% {position: relative; left: -200px; top: 200px;}
+    100% {position: relative; left: 0px; top: 0px;}
+}
+@-webkit-keyframes rotate
+{
+    0% {position: relative; left: 0px; top: 0px;}
+    25% {position: relative; left: 200px; top: 200px;}
+    50% {position: relative; left: 0px; top: 400px;}
+    75% {position: relative; right: 200px; top: 200px;}
+    100% {position: relative; right: 0px; top: 0px;}    
+}
